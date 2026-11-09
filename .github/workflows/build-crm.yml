@@ -1,0 +1,24 @@
+
+name: Construir Motriz CRM
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build-crm:
+    uses: frappe/frappe_docker/.github/workflows/app-build-image.yml@main
+    with:
+      app_name: crm
+      app_repo: frappe/crm
+      app_ref: main
+      frappe_ref: version-16
+      frappe_image_prefix: ghcr.io/frappe
+      image_name: ghcr.io/ricardowolffotografo-byte/motriz-crm
+      image_tag: teste-1
+      registry: ghcr.io
+      push: true
+      platforms: linux/amd64
